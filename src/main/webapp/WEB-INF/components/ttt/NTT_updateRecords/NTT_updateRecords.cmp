@@ -1,0 +1,26 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="NTT_UpdateRecordsCtrl" access="global">
+    
+     <ltng:require styles="{!$Resource.SLDS100 +
+         '/assets/styles/salesforce-lightning-design-system-ltng.css'}"/>
+    
+     <aura:attribute name="recordId" type="String" default="00158000002dyM6AAI"/>
+     <aura:attribute name="typeText" type="String" default="Text to be shown"/>
+     <aura:attribute name="rgbValueBackground" type="String" default="#FFFFFF"/>
+     <aura:attribute name="buttonClass" type="String"/>
+     <aura:attribute name="buttonTimestamp" type="String" default="Change CSS"/>
+                      
+    <div>   
+        <ui:button press="{!c.updateCSS}" aura:id="firstButton" class="{!v.buttonClass}" label="{!v.buttonTimestamp}"></ui:button>    
+    </div>
+
+    <span dir="ltr" class="uiOutputText" style="{!'color:'+v.rgbValueBackground}">
+        <div class="slds-col--padded slds-size--1-of-1" style="{!'width:100%; overflow: hidden; z-index:10; display:block;padding:8px; font-size: 14px; color:white; background-color: ' + v.rgbValueBackground}">
+		    <ui:outputText value="{!v.typeText}"/>
+        </div>
+    </span>
+
+    <c:NTT_UpdateRecordsSecondCmp buttonClass="{!v.buttonClass}"/>
+    
+    <c:NTT_BarChartCmp />
+
+</aura:component>

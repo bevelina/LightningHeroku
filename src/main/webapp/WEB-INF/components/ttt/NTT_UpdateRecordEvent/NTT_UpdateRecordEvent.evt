@@ -1,0 +1,5 @@
+<aura:event type="APPLICATION" >
+    <aura:attribute name="account" type="Account"/>
+    <aura:attribute name="buttonClass" type="String"/>
+    <aura:attribute name="buttonTimestamp" type="String"/>
+</aura:event>

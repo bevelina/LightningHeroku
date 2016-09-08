@@ -1,0 +1,29 @@
+.THIS .customerDirectClass {
+    /* light yellow */
+    background-color : #ffff66;
+}
+
+.THIS .customerChannelClass {
+    /* light blue */
+    background-color : #668cff; 
+}
+
+.THIS .prospectClass {
+    /* light pink */
+    background-color : #ffb3ff;
+}
+
+.THIS .channelPartnerClass {
+    /* light orange */
+    background-color : #ffb84d;
+}
+
+.THIS .installationClass {
+    /* light purple */
+    background-color : #cc99ff;
+}
+
+.THIS .technologyClass {
+    /* light green */
+    background-color : #80ff80;
+}

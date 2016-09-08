@@ -1,0 +1,12 @@
+<aura:component controller="NTT_BarChartController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName">
+    <ltng:require scripts="/resource/Chartjs_chart_min_js/" afterScriptsLoaded="{!c.init}"/>
+
+<div class="heading">
+    	Bar Chart displaying account count by Type
+    </div>
+
+
+<div>  
+        <canvas aura:id="barChart" id="radarCHart123" width="400" height="400"/>
+    </div>
+</aura:component>
