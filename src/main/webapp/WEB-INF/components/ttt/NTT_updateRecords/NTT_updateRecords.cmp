@@ -1,8 +1,9 @@
-<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="NTT_UpdateRecordsCtrl" access="global">
-    
+<!--aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="NTT_UpdateRecordsCtrl" access="global"-->
+<aura:component controller="ttt__.NTT_UpdateRecordsCtrl" access="global">
+    <!--
      <ltng:require styles="{!$Resource.SLDS100 +
          '/assets/styles/salesforce-lightning-design-system-ltng.css'}"/>
-    
+    -->
      <aura:attribute name="recordId" type="String" default="00158000002dyM6AAI"/>
      <aura:attribute name="typeText" type="String" default="Text to be shown"/>
      <aura:attribute name="rgbValueBackground" type="String" default="#FFFFFF"/>
@@ -19,8 +20,8 @@
         </div>
     </span>
 
-    <c:NTT_UpdateRecordsSecondCmp buttonClass="{!v.buttonClass}"/>
+    <ttt:NTT_UpdateRecordsSecondCmp buttonClass="{!v.buttonClass}"/>
     
-    <c:NTT_BarChartCmp />
+    <ttt:NTT_BarChartCmp />
 
 </aura:component>

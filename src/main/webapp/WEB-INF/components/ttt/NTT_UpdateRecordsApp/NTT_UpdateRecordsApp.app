@@ -1,4 +1,4 @@
-<aura:application access="GLOBAL">
-    <!--aura:dependency resource="c:NTT_updateRecords"/-->   
-    <c:NTT_updateRecords />
+<aura:application access="GLOBAL"> 
+   
+    <ttt:NTT_BarChartCmp/>
 </aura:application>

@@ -9,5 +9,7 @@
   "website": "https://github.com/forcedotcom/aura",
   "repository": "https://github.com/rajaraodv/tictactoe",
   "logo": "http://documentation.auraframework.org/auraFW/resources/aura/images/logo.png",
-  "success_url": "/"
+  "success_url": "/",
+  
+   "content_security_policy": "script-src 'self' http://canvasjs.com/assets/script/canvasjs.min.js; object-src 'self'"
 }

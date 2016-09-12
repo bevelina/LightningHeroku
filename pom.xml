@@ -76,6 +76,11 @@
 			<artifactId>httpcore</artifactId>
 			<version>4.2</version>
 		</dependency>
+		<dependency>
+    <groupId>com.pingunaut</groupId>
+    <artifactId>wicket-chartjs</artifactId>
+    <version>6.19.0</version>
+</dependency>
 	</dependencies>
 
 	<build>
