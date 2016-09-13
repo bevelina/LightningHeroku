@@ -1,9 +1,7 @@
 <!--aura:component controller="ttt.NTT_BarChartController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName"-->
     
-	<aura:component>
-	<!--
-	<ltng:require scripts="/resource/Chartjs_chart_min_js/" afterScriptsLoaded="{!c.init}"/>
--->
+	<aura:component controller="java://NTT_BarChartController">
+
 
  <aura:handler name="init" value="{!this}" action="{!c.init}" />
 
