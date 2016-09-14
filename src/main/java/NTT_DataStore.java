@@ -14,7 +14,7 @@ import com.j256.ormlite.table.TableUtils;
 public class NTT_DataStore {
 
 	private static final NTT_DataStore INSTANCE = new NTT_DataStore();
-	private static final String DB_URL = "jdbc:h2:~/auranote.db;AUTO_SERVER=TRUE;IGNORECASE=TRUE";
+	private static final String DB_URL = "postgres://shddyoqdkuvjmv:sJ_SLWNZhasPf8bBvAFVJ3nGso@ec2-54-235-124-2.compute-1.amazonaws.com:5432/ddqor59u32pcrr";
 
 	private ConnectionSource connectionSource;
 

@@ -1,4 +1,8 @@
+import java.net.URISyntaxException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,18 +21,29 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.dao.GenericRawResults;
 import com.j256.ormlite.stmt.PreparedQuery;
 
-import org.json.*;
 import java.util.*;
 
 @Controller
 public class NTT_BarChartController {
 
 	@AuraEnabled
-	public static String getAccountJSON() throws SQLException, JsonProcessingException {
+	public static String getAccountJSON() throws SQLException, JsonProcessingException, URISyntaxException {
 
-		Dao<Account, Long> accountDao = DaoManager.createDao(NTT_DataStore.getInstance().getConnectionSource(),
-				Account.class);
-		List<Account> accounts = accountDao.queryForAll();
+		List<Account> accounts = new ArrayList<>();
+
+		Statement statement = ConnectionManager.getConnection().createStatement();
+
+		ResultSet result = statement.executeQuery("SELECT  name, type FROM salesforce.account");
+
+		while (result.next()) {
+			String name = result.getString("name");
+			String type = result.getString("type");
+			Account account = new Account(name, type);
+			accounts.add(account);
+
+		}
+
+		System.out.println("the accounts are" + accounts);
 		Map<String, Integer> mapType = new HashMap<String, Integer>();
 
 		for (Account a : accounts) {
@@ -46,6 +61,7 @@ public class NTT_BarChartController {
 			barData.barData.add(mapType.get(key));
 		}
 
+		// return mapper.writeValueAsString(barData);
 		return mapper.writeValueAsString(barData);
 
 	}

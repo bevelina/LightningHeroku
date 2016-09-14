@@ -7,51 +7,44 @@
 console.log('the script' +script);
 				 var newCanvas = document.createElement("canvas");
              newCanvas.id = "sketcher";
-			 newCanvas.style.border = "1px solid";
+			 //newCanvas.style.border = "1px solid";
              document.body.appendChild(newCanvas);
 			 console.log('the width of the canvas'+newCanvas.width);
 			 console.log('the height of the canvas'+newCanvas.height);
 			 console.log('the canvas element'+newCanvas);
 			 console.log('the id of the canvas'+newCanvas.id);
-			 document.head.appendChild(script);
-		script.onload = function(){
-
-
-
+			 document.body.appendChild(script);
+			 var action = component.get("c.getAccountJSON");
+			 action.setCallback(this, function(a){
+            var jsonRetVal = JSON.parse(a.getReturnValue()); 
+            console.log(jsonRetVal.barLabels);
+		//script.onload = function(){
+		
+            	
 			
+				
+	
+            
 			var ctx = document.getElementById('sketcher').getContext('2d');
-	
-	
-var data = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
-    datasets: [
-        {
-            label: "My First dataset",
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1,
-            data: [65, 59, 80, 81, 56, 55, 40],
-        }
-    ]
-};
+			
+            var barChartData = {
+			labels: jsonRetVal.barLabels,
+			datasets: [
+                { 
+                    fillColor : "#00ff00",
+                    strokeColor: "#004d00",
+                    pointColor: "#00cc00",
+                    pointStrokeColor: "#194d19",
+                    pointHighlightFill: "#194d19",
+                    pointHighlightStroke: "#1aff1a",
+                    data: jsonRetVal.barData
+                }
+            ]
+        };
 
 	scatterChart = new Chart(ctx, {
     type: 'bar',
-    data:data,
+    data:barChartData,
     options: {
         scales: {
             xAxes: [{
@@ -67,13 +60,14 @@ var data = {
    //document.body.appendChild(newCanvas);
 	scatterChart.render();	
 		
-    }
-		
     
+				
 	
-	console.log('the source of the script is'+script.src);
 		
-	}
-                           
+		//}
+	
+			 });
+$A.enqueueAction(action);			
+ }        
 	
 })
