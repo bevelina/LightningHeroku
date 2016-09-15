@@ -34,7 +34,7 @@ public class NTT_UpdateRecordsCtrl {
 
 	@AuraEnabled
 	public static Account getAccountObject(@Key("recordId") String recordId) throws SQLException, URISyntaxException {
-		// List<Account> accounts = new ArrayList<>();
+
 		Account account = null;
 		Statement statement = ConnectionManager.getConnection().createStatement();
 
@@ -47,7 +47,6 @@ public class NTT_UpdateRecordsCtrl {
 			String type = result.getString("type");
 
 			account = new Account(name, type);
-			// accounts.add(account);
 
 		}
 

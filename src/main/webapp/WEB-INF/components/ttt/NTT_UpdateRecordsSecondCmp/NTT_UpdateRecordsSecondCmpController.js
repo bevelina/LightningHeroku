@@ -5,33 +5,40 @@
          var buttonTimestamp = event.getParam('buttonTimestamp');
          console.log('Account: ' + account.type);
         
-         if (account.Type === 'Customer - Direct') {
+         if (account.type === 'Customer - Direct') {
             $A.util.addClass(buttonClass, 'customerDirectClass');
-            console.log('Account type: ' + account.Type);
+            console.log('Account type: ' + account.type);
             
-        } else if (account.Type === 'Customer - Channel') {
-            console.log('Account type: ' + account.Type);
+        } else if (account.type === 'Customer - Channel') {
+            console.log('Account type: ' + account.type);
             $A.util.addClass(buttonClass, 'customerChannelClass');
         }
-            else if (account.Type === 'Prospect') {
-                console.log('Account type: ' + account.Type);
+            else if (account.type === 'Prospect') {
+                console.log('Account type: ' + account.type);
             $A.util.addClass(buttonClass, 'prospectClass');
             }
-         else if (account.Type === 'Channel Partner/Reseller') {
-             console.log('Account type: ' + account.Type);
+         else if (account.type === 'Channel Partner/Reseller') {
+             console.log('Account type: ' + account.type);
              $A.util.addClass(buttonClass, 'channelPartnerClass');
          }
-         else if (account.Type === 'Installation Partner') {      
-             console.log('Account type: ' + account.Type);
+         else if (account.type === 'Installation Partner') {      
+             console.log('Account type: ' + account.type);
              $A.util.addClass(buttonClass, 'installationClass');
          }
-         else if (account.Type === 'Technology Partner') {
-             console.log('Account type: ' + account.Type);
+         else if (account.type === 'Technology Partner') {
+             console.log('Account type: ' + account.type);
              $A.util.addClass(buttonClass, 'technologyClass');
          
         } else {
-            console.log('Account type: ' + account.Type);
+            console.log('Account type: ' + account.type);
             console.log('The current account has no defined type');
         }
-    }
+    },
+	doInit : function(component, event, helper){
+		var css = document.createElement("style");
+		css.type = "text/css";
+		css.src = '/scripts/salesforce-lightning-design-system-ltng.css';
+		  document.head.appendChild(css);
+	}
+	
 })

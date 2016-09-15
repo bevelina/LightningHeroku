@@ -43,8 +43,9 @@ console.log('the script' +script);
         };
 
 	scatterChart = new Chart(ctx, {
-    type: 'bar',
-    data:barChartData,
+    type: 'doughnut',
+    data:barChartData
+	/*
     options: {
         scales: {
             xAxes: [{
@@ -55,6 +56,8 @@ console.log('the script' +script);
 			}]
         }
     }
+	)
+	*/
 });
 				
    //document.body.appendChild(newCanvas);
