@@ -1,5 +1,7 @@
 <!--aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" controller="NTT_UpdateRecordsCtrl" access="global"-->
-<aura:component controller="ttt__.NTT_UpdateRecordsCtrl" access="global">
+
+<aura:component controller="java://NTT_UpdateRecordsCtrl" access="global">
+
     <!--
      <ltng:require styles="{!$Resource.SLDS100 +
          '/assets/styles/salesforce-lightning-design-system-ltng.css'}"/>
@@ -9,6 +11,10 @@
      <aura:attribute name="rgbValueBackground" type="String" default="#FFFFFF"/>
      <aura:attribute name="buttonClass" type="String"/>
      <aura:attribute name="buttonTimestamp" type="String" default="Change CSS"/>
+	 <aura:attribute name="objects" type="Object[]"/>
+	 
+	 
+	 <aura:handler name="init" value="{!this}" action="{!c.getRecords}" /> 
                       
     <div>   
         <ui:button press="{!c.updateCSS}" aura:id="firstButton" class="{!v.buttonClass}" label="{!v.buttonTimestamp}"></ui:button>    
@@ -21,7 +27,17 @@
     </span>
 
     <ttt:NTT_UpdateRecordsSecondCmp buttonClass="{!v.buttonClass}"/>
-    
+    <!--
     <ttt:NTT_BarChartCmp />
+-->
 
+    <div class="slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click" aria-expanded="false">
+        <button class="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" aria-activedescendant="">
+            <ui:inputSelect aura:id="selectedObject" label="Select a Record" change="{!c.getRecordId}">
+            <aura:iteration items="{!v.objects}" var="object">
+                <ui:inputSelectOption text="{!object.name}" label="{!object.name}"/>
+            </aura:iteration>
+            </ui:inputSelect>
+        </button>    
+    </div> 
 </aura:component>

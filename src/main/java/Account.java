@@ -23,6 +23,13 @@ public class Account implements JsonSerializable {
 		this.Type = Type;
 	}
 
+	public Account(Long name2, String type2) {
+		this.id = name2;
+		this.Name = type2;
+	}
+
+	
+
 	public String getName() {
 		return Name;
 	}

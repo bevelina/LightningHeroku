@@ -1,10 +1,13 @@
 <!--aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="NTT_UpdateRecordsCtrl"-->
-<aura:component access="global" controller="ttt__.NTT_UpdateRecordsCtrl">
-    
+
+<aura:component access="global" controller="java://NTT_UpdateRecordsCtrl">
+
+	<!--
     <ltng:require styles="{!$Resource.SLDS100 +
          '/assets/styles/salesforce-lightning-design-system-ltng.css'}"/>
+		 -->
 
-    <aura:handler event="c:NTT_UpdateRecordEvent" action="{!c.updateRecord}"/>
+    <aura:handler event="ttt:NTT_UpdateRecordEvent" action="{!c.updateRecord}"/>
 
     <aura:attribute name="account" type="Account"/>
     <aura:attribute name="buttonClass" type="String"/>

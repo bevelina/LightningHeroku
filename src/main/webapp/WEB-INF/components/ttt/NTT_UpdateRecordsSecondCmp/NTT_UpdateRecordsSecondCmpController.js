@@ -3,7 +3,7 @@
          var account = event.getParam('account');
          var buttonClass = event.getParam('buttonClass');
          var buttonTimestamp = event.getParam('buttonTimestamp');
-         console.log('Account: ' + account);
+         console.log('Account: ' + account.type);
         
          if (account.Type === 'Customer - Direct') {
             $A.util.addClass(buttonClass, 'customerDirectClass');

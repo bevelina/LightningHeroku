@@ -2,6 +2,7 @@
 
     updateCSS : function(cmp, event, helper){    
         var recordId = cmp.get("v.recordId");
+		console.log('the record id in the controller'+recordId);
         var firstButton = cmp.find("firstButton");
         
         console.log(recordId);
@@ -20,44 +21,46 @@
                 var buttonTimestamp = new Date();
                 var timestamp = buttonTimestamp.getMonth()+"-"  + buttonTimestamp.getDate()+"-"  + buttonTimestamp.getFullYear() + " " + buttonTimestamp.getHours()+ ":"+buttonTimestamp.getMinutes()+":"+buttonTimestamp.getSeconds();
                 var rgb = "#FFFFFF";//white
-                if (account.Type != null) {
-                    if (account.Type === 'Customer - Direct') {
+				console.log('the first account type'+account.Type);
+				console.log('the first account name'+account.name);
+                if (account.type != null) {
+                    if (account.type === 'Customer - Direct') {
                         $A.util.addClass(firstButton, 'customerDirectClass');
                         buttonClass = 'customerDirectClass';
                         console.log('the button class is:'+buttonClass);
                         type = 'Customer - Direct';
                         rgb = '#e10072';//magenta
-                    } else if (account.Type === 'Customer - Channel') {
+                    } else if (account.type === 'Customer - Channel') {
                         $A.util.addClass(firstButton, 'customerChannelClass');
                         buttonClass = 'customerChannelClass';
                         console.log('the button class is:'+buttonClass);
                         type = 'Customer - Channel';
                         rgb = '#0C5EB0';//blue
-                    } else if (account.Type === 'Prospect') {
+                    } else if (account.type === 'Prospect') {
                         $A.util.addClass(firstButton, 'prospectClass');
                         buttonClass = 'prospectClass';
                         type = 'Prospect';
                         rgb = '#D55A35';//orange
-                    } else if (account.Type === 'Channel Partner/Reseller') {
+                    } else if (account.type === 'Channel Partner/Reseller') {
                         $A.util.addClass(firstButton, 'channelPartnerClass');
                         buttonClass = 'channelPartnerClass';
                         type = 'Channel Partner/Reseller';
                         rgb = '#C44444';//red
                     }
-                      else if (account.Type === 'Installation Partner') {
+                      else if (account.type === 'Installation Partner') {
                           $A.util.addClass(firstButton, 'installationPartnerClass');
                           buttonClass = 'installationPartnerClass';
                         type = 'Installation Partner';
                         rgb = '#003300';//dark green
                     }
-                     else if (account.Type === 'Technology Partner') {
+                     else if (account.type === 'Technology Partner') {
                          $A.util.addClass(firstButton, 'technologyPartnerClass');
                         buttonClass = 'technologyPartnerClass';
           
                         type = 'Technology Partner';
                         rgb = '#ff9900';//orange
                     }
-              else if (account.Type === 'Other') {
+              else if (account.type === 'Other') {
                         buttonClass = '';
                         type = 'Other';
                         rgb = '#bbff33';//lime green
@@ -72,7 +75,7 @@
     
                 
                 //event that is handled by CMP2 to updated the icon
-                var updateRecordEvent = $A.get("e.c:NTT_UpdateRecordEvent");
+                var updateRecordEvent = $A.get("e.ttt:NTT_UpdateRecordEvent");
                 updateRecordEvent.setParams({account: account,
                                              buttonClass: buttonClass,
                                              buttonTimestamp : timestamp});
@@ -98,4 +101,31 @@
         $A.enqueueAction(action);
     },
   
+     getRecords: function(component){
+		       
+	var css = document.createElement("style");
+		css.type = "text/css";
+		css.src = '/scripts/salesforce-lightning-design-system-ltng.css';
+		  document.head.appendChild(css);
+  
+        var action = component.get("c.getObjectList");
+              
+        action.setCallback(this, function(response){
+            var state = response.getState();
+                if (state === "SUCCESS") {
+                    component.set("v.objects", response.getReturnValue());
+                }
+        });
+        
+        $A.enqueueAction(action);
+        
+    },
+	
+	 getRecordId: function(component){
+        var selectedField = component.find("selectedObject");
+        var selectedValue = selectedField.get("v.value");
+        console.log(selectedValue);
+		component.set("v.recordId",selectedValue);
+	
+    },
 })
